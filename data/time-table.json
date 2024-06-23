@@ -1,0 +1,247 @@
+[
+    {
+        "class": "CSM-B",
+        "schedule": [
+            {
+                "classes": [
+                    {
+                        "subject": "DM",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "JAVA",
+                        "time": "10:30-11:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "IAI",
+                        "time": "11:40-12:40",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DBMS",
+                        "time": "2:00-2:50",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "LAB",
+                        "time": "2:20-4:00",
+                        "location": "B3 - 413",
+                        "type": "Lab",
+                        "classes": 2,
+                        "info": [
+                            "DBMS",
+                            "JAVA"
+                        ]
+                    }
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "subject": "JAVA",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DM",
+                        "time": "10:30-11:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "ATCD",
+                        "time": "11:40-12:40",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "IAI",
+                        "time": "1:30-2:20",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DBMS",
+                        "time": "2:20-3:10",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "IAI",
+                        "time": "3:10-4:00",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    }
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "subject": "JAVA",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "LAB",
+                        "time": "10:30-12:40",
+                        "location": "B3 - 413",
+                        "type": "Lab",
+                        "classes": 2,
+                        "info": [
+                            "PROLOG",
+                            "DBMS"
+                        ]
+                    },
+                    {
+                        "subject": "DBMS",
+                        "time": "1:30-2:20",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DM",
+                        "time": "2:20-3:10",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "ATCD",
+                        "time": "3:10-4:00",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    }
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "subject": "ATCD",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "IAI",
+                        "time": "10:30-11:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DM",
+                        "time": "11:40-12:40",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "JAVA",
+                        "time": "2:00-2:50",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "PROJECT",
+                        "time": "2:20-4:00",
+                        "location": "B3 - 413",
+                        "type": "Lab",
+                        "classes": 2,
+                        "info": [
+                            "PROJECT",
+                            "PROJECT"
+                        ]
+                    }
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "subject": "DMBS",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "LAB",
+                        "time": "10:30-12:40",
+                        "location": "B3 - 413",
+                        "type": "Lab",
+                        "classes": 2,
+                        "info": [
+                            "JAVA",
+                            "PROLOG"
+                        ]
+                    },
+                    {
+                        "subject": "DM",
+                        "time": "1:30-2:20",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "ATCD",
+                        "time": "2:20-3:10",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "JAVA",
+                        "time": "3:10-4:00",
+                        "location": "D4 - 123",
+                        "type": "Theory"
+                    }
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "subject": "ATCD",
+                        "time": "9:30-10:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "IAI",
+                        "time": "10:30-11:30",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "DBMS",
+                        "time": "11:40-12:40",
+                        "location": "B3 - 412",
+                        "type": "Theory"
+                    },
+                    {
+                        "subject": "LAB",
+                        "time": "1:30-2:20",
+                        "location": "D4 - 123",
+                        "type": "Lab",
+                        "classes": 1,
+                        "info": [
+                            "GS",
+                            "GS"
+                        ]
+                    },
+                    {
+                        "subject": "PROJECT",
+                        "time": "2:20-4:00",
+                        "location": "B3 - 413",
+                        "type": "Lab",
+                        "classes": 2,
+                        "info": [
+                            "PROJECT",
+                            "PROJECT"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

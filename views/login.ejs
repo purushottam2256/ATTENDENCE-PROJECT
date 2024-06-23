@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      body {
+        padding: 5vh 5%;
+        margin: 0;
+        height: 90vh;
+        background-color: aliceblue;
+        background-image: url(./images/Aahvan-event-image.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      img {
+        width: 150px;
+      }
+      h1 {
+        font-size: 44px;
+        color: var(--color-semi-light);
+        font-weight: 100;
+        text-shadow: 5px 5px 10px black;
+      }
+      h2 {
+        font-size: 38px;
+        color: var(--color-semi-light);
+        font-weight: 100;
+        text-shadow: 5px 5px 10px black;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      .college {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 5%;
+      }
+      .form {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(4px);
+        align-items: center;
+        gap: 10px;
+
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transition: all ease .4s;
+      }
+      .form:hover{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        transition: all ease .4s;
+      }
+      form {
+        font-size: 24px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-family: var(--font-family);
+        gap: 5px;
+      }
+      input {
+        height: 40px;
+        padding: 0 5px;
+        border-radius: 5px;
+        border: var(--color-semi-dark) solid 2px;
+        margin-bottom: 20px;
+        transition: all ease .4s;
+
+      }
+      input:active{
+        border: var(--color-dark) solid 2px;
+        transition: all ease .4s;
+      }
+      input[type="text"],
+      input[type="password"] {
+        font-size: 18px;
+        font-family: var(--font-family);
+      }
+      button {
+        font-size: 24px;
+        font-weight: bold;
+        height: 50px;
+        border-radius: 5px;
+        border: var(--color-semi-dark) solid 2px;
+      }
+      
+      a {
+        color: var(--color-dark);
+        opacity: .6;
+        transition: all ease .4s;
+      }
+      a:hover{
+        opacity: 1;
+        transition: all ease .4s;
+      }
+
+      /* Tablet styles (width between 600px and 900px) */
+      @media (min-width: 600px) and (max-width: 900px) {
+        .college {
+          width: 30%;
+        }
+        body {
+          padding: 5vh 2%;
+        }
+      }
+
+      /* Mobile styles (width less than 600px) */
+      @media (max-width: 599px) {
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+        .college {
+          gap: 10px;
+        }
+        .form {
+          width: 80%;
+        }
+        h1,
+        h2,
+        h3 {
+          font-size: 24px;
+        }
+        label,
+        button {
+          font-size: 20px;
+        }
+        a {
+          font-size: 12px;
+        }
+        img {
+          width: 100px;
+        }
+        input {
+          height: 30px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .green {
+        color: var(--color-theme-dark);
+        background-color: var(--color-theme-light);
+        opacity: .6;
+        transition: all ease-out .4s;
+      }
+      .form:hover .green{
+        opacity: .8;
+        transition: all ease-out .4s;
+      }
+      .green:hover{
+        font-size: 26px;
+        opacity: 1;
+        border: var(--color-dark) solid 2px;
+        transition: all ease-out .4s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="college">
+      <img src="./images/mrce.png" alt="MRCE" />
+      <h1>MRCE</h1>
+      <h2>Malla Reddy College of Engineering</h2>
+    </div>
+    <div class="form">
+      <img src="./images/logo.svg" alt="ATTNED-ME" />
+      <h3>LOGIN</h3>
+      <form action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit" class="green">LOGIN</button>
+      </form>
+      <a href="/about/forgot-password">Forgot Username / Password?</a>
+    </div>
+  </body>
+</html>
