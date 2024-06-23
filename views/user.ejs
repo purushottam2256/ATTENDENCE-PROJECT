@@ -1,10 +1,178 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Welcome <%= username %></title>
-</head>
-<body>
-    <h1>Welcome, <%= student.name %>!</h1>
-    <p>You have successfully logged in.</p>
-</body>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-template-rows: 1fr 10fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+      }
+      header {
+        padding: 5px 25px;
+        display: flex;
+        color: var(--color-semi-light);
+        background-color: var(--color-dark);
+        align-items: center;
+        justify-content: space-between;
+        grid-column: span 2;
+      }
+      header div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+      header div a {
+        color: var(--color-semi-dark);
+        text-decoration: none;
+        transform: scale(0.95);
+        transition: all ease 0.3s;
+      }
+      header div a:hover {
+        color: var(--color-error-light);
+        transform: scale(1);
+        transition: all ease 0.3s;
+        text-decoration: underline;
+      }
+      nav {
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5vh;
+        padding: 5vh 20px;
+      }
+      nav a{
+        text-decoration: none;
+        background-color: var(--color-semi-light);
+        color: var(--color-semi-dark);
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: rgba(0, 0, 0, 0) solid 1px;
+        transition: all ease-in-out 0.1s;
+      }
+      nav a:hover{
+        background-color: var(--color-theme-light);
+        color: var(--color-theme-dark);
+        border: var(--color-theme-dark) solid 1px;
+        transition: all ease-in-out 0.2s;
+        transition: all ease-in-out 0.1s;
+      }
+      .active {
+        background-color: var(--color-theme-light);
+        color: var(--color-theme-dark);
+      }
+      .classes {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        gap: 20px;
+      }
+      .class {
+        background-color: var(--color-theme-light);
+        color: var(--color-theme-dark);
+        padding: 10px 20px;
+        border-radius: 5px;
+        grid-column: span 2;
+        border: rgba(0, 0, 0, 0) solid 1px;
+        transition: all ease-in-out 0.2s;
+      }
+      .class:hover{
+        border: var(--color-theme-dark) solid 1px;
+        transition: all ease-in-out 0.2s;
+      }
+      .Lab {
+        grid-column: span 4;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5vh 5%;
+      }
+      h1,
+      h4 {
+        font-weight: 100;
+      }
+      h4 {
+        color: var(--color-semi-dark);
+      }
+      @media (min-width: 600px) and (max-width: 900px) {
+        .class {
+          grid-column: span 4;
+        }
+        .Lab {
+          grid-column: span 8;
+        }
+      }
+      @media (max-width: 599px) {
+        main {
+          grid-column: span 2;
+        }
+        nav {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          min-width: 200px;
+          flex-direction: row;
+          gap: 5px;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .class {
+          grid-column: span 4;
+        }
+        .Lab {
+          grid-column: span 8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>ATTEND-ME</h2>
+      <div>
+        <h3><%= capitalizeEachWord(student["name"]) %></h3>
+        <a href="/logout">Logout</a>
+      </div>
+    </header>
+    <nav>
+      <a href="/<%= student["roll-number"] %>/schedule">Schedule</a>
+      <a href="/<%= student["roll-number"] %>/info">Student Info</a>
+      <a href="/<%= student["roll-number"] %>/attendance">Attendance</a>
+      <a href="/<%= student["roll-number"] %>/time-table">Time Tables</a>
+      <a href="/<%= student["roll-number"] %>/calendar">Calendar</a>
+      <a href="/about">About</a>
+    </nav>
+    <main>
+      <h1>Today’s Schedule</h1>
+      <h4>12 June 2024</h4>
+      <div class="classes">
+        <% if (classes.length > 0) { %> 
+            <% classes.forEach(classItem => { %>
+                <div class="class <%= classItem.type %>">
+                <% if (classItem.type === 'Lab') { %>
+                    <h5><%= classItem.info.join(' / ') %> <%= classItem.type %></h5>
+                <% } else { %>
+                    <h5><%= classItem.subject %> <%= classItem.type %></h5>
+                <% } %>
+                <p><%= classItem.time %></p>
+                <p><%= classItem.location %></p>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <p>No Classes Today</p>
+        <% } %>
+      </div>
+    </main>
+  </body>
 </html>

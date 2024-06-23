@@ -41,6 +41,11 @@ app.use(session({
     cookie: { secure: false } // Set to true if using HTTPS
 }));
 
+const currentDate = new Date();
+const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
+const dayIndex = 2;
+// const dayIndex = currentDate.getDay() - 1;
+
 // Route for the login page
 app.get('/login', (req, res) => {
     res.render('login');
@@ -50,11 +55,7 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Read existing user data from JSON file
-    const usersData = fs.readFileSync(userLoginFilePath);
-    const users = JSON.parse(usersData);
-    // Check if the user exists and the password matches
-    if (users.includes(username) && users.includes(password)) {
+    if (isValidUser(username, password)) {
         // Store user info in session
         req.session.username = username;
         console.log(username);
@@ -63,13 +64,22 @@ app.post('/login', (req, res) => {
         res.send('Invalid username or password');
     }
 });
-
+app.get('/logout', (req, res) => {
+    // Destroy the user session
+    req.session.destroy(err => {
+        if (err) {
+            return res.redirect('/');
+        }
+        res.clearCookie('connect.sid'); // Clears the session cookie
+        res.redirect('/login'); // Redirect to login page after logout
+    });
+});
 // Route for the user-specific page
 app.get('/:username', (req, res) => {
     const { username } = req.params;
     let student = {};
     let schedule = {};
-    if (username) {
+    if (isValidUser(username, username)) {
         const studentData = fs.readFileSync(studentDetailsFilePath);
         const studentDetails = JSON.parse(studentData);
         student = studentDetails.find(student => student["roll-number"] === username);
@@ -80,9 +90,11 @@ app.get('/:username', (req, res) => {
         console.log(student);
         console.log(schedule);
     }
+    const classes = (dayIndex == -1) ? [] : schedule["schedule"][dayIndex]["classes"];
+    console.log(classes);
 
     if (req.session.username === username) {
-        res.render('user', { username, student, schedule });
+        res.render('user', { username, student, formattedDate, classes , capitalizeEachWord });
     } else {
         res.redirect('/login');
     }
@@ -92,3 +104,16 @@ app.get('/:username', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+function capitalizeEachWord(str) {
+    return str.split(' ').map(word => {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
+  }
+
+  function isValidUser(username, password) {
+    const usersData = fs.readFileSync(userLoginFilePath);
+    const users = JSON.parse(usersData);
+    return users.includes(username) && users.includes(password);
+}
