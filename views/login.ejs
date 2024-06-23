@@ -8,12 +8,10 @@
         padding: 5vh 5%;
         margin: 0;
         height: 90vh;
-        background-color: aliceblue;
-        background-image: url(./images/Aahvan-event-image.jpg);
+        background-color: var(--color-semi-dark);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -166,10 +164,25 @@
         border: var(--color-dark) solid 2px;
         transition: all ease-out .4s;
       }
+
+      .background-image {
+    display: none; /* Hide the background image by default */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/Aahvan-event-image.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -10;
+}
     </style>
   </head>
 
   <body>
+    <div class="background-image"></div>
     <div class="college">
       <img src="./images/mrce.png" alt="MRCE" />
       <h1>MRCE</h1>
@@ -187,5 +200,22 @@
       </form>
       <a href="/about/forgot-password">Forgot Username / Password?</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+    // Create an image object
+    var img = new Image();
+    img.onload = function() {
+        // When image is loaded, fade it in
+        $('.background-image').fadeIn(1000);
+    };
+    img.src = './images/Aahvan-event-image.jpg'; // Set the image source
+
+    if (img.complete) {
+        $('.background-image').fadeIn();
+    }
+});
+
+    </script>
   </body>
 </html>

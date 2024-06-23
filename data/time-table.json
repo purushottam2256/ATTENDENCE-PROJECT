@@ -3,6 +3,7 @@
         "class": "CSM-B",
         "schedule": [
             {
+                "day": "Monday",
                 "classes": [
                     {
                         "subject": "DM",
@@ -42,6 +43,7 @@
                 ]
             },
             {
+                "day": "Tuesday",
                 "classes": [
                     {
                         "subject": "JAVA",
@@ -82,6 +84,7 @@
                 ]
             },
             {
+                "day": "Wednesday",
                 "classes": [
                     {
                         "subject": "JAVA",
@@ -121,6 +124,7 @@
                 ]
             },
             {
+                "day": "Thuesday",
                 "classes": [
                     {
                         "subject": "ATCD",
@@ -160,6 +164,7 @@
                 ]
             },
             {
+                "day": "Friday",
                 "classes": [
                     {
                         "subject": "DMBS",
@@ -199,6 +204,7 @@
                 ]
             },
             {
+                "day": "Saturday",
                 "classes": [
                     {
                         "subject": "ATCD",

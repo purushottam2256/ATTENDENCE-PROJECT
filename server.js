@@ -43,8 +43,8 @@ app.use(session({
 
 const currentDate = new Date();
 const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
-const dayIndex = 2;
-// const dayIndex = currentDate.getDay() - 1;
+// const dayIndex = 2;
+const dayIndex = currentDate.getDay() - 1;
 
 // Route for the login page
 app.get('/login', (req, res) => {
@@ -87,14 +87,33 @@ app.get('/:username', (req, res) => {
         const scheduleData = fs.readFileSync(scheduleDetailsFilePath);
         const scheduleDetails = JSON.parse(scheduleData);
         schedule = scheduleDetails.find(schedule => schedule["class"] === student["section"]);
-        console.log(student);
-        console.log(schedule);
     }
     const classes = (dayIndex == -1) ? [] : schedule["schedule"][dayIndex]["classes"];
-    console.log(classes);
 
     if (req.session.username === username) {
         res.render('user', { username, student, formattedDate, classes , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/:username/schedule', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    let schedule = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    
+        const scheduleData = fs.readFileSync(scheduleDetailsFilePath);
+        const scheduleDetails = JSON.parse(scheduleData);
+        schedule = scheduleDetails.find(schedule => schedule["class"] === student["section"]);
+    }
+    const classes = (dayIndex == -1) ? [] : schedule["schedule"][dayIndex]["classes"];
+
+    if (req.session.username === username) {
+        res.render('schedule', { username, student, formattedDate, classes, schedule , capitalizeEachWord });
     } else {
         res.redirect('/login');
     }

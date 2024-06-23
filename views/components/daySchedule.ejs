@@ -1,0 +1,19 @@
+<h1>Today’s Schedule</h1>
+<h4>12 June 2024</h4>
+<div class="classes">
+    <% if (classes.length > 0) { %> 
+        <% classes.forEach(classItem => { %>
+            <div class="class <%= classItem.type %>">
+            <% if (classItem.type === 'Lab') { %>
+                <h5><%= classItem.info.join(' / ') %> <%= classItem.type %></h5>
+            <% } else { %>
+                <h5><%= classItem.subject %> <%= classItem.type %></h5>
+            <% } %>
+            <p><%= classItem.time %></p>
+            <p><%= classItem.location %></p>
+            </div>
+        <% }) %> 
+    <% } else { %>
+        <p>No Classes Today</p>
+    <% } %>
+</div>

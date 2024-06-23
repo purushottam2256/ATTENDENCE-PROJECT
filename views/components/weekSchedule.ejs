@@ -1,0 +1,17 @@
+<h1>Schedule</h1>
+<% schedule["schedule"].forEach(day => { %>
+    <h4><%= day.day %></h4>
+    <div class="classes">
+        <% day.classes.forEach(classItem => { %>
+            <div class="class <%= (classItem.classes == 2) ? `Lab` : `Theory` %>">
+            <% if (classItem.type === 'Lab') { %>
+                <h5><%= classItem.info.join(' / ') %> <%= classItem.type %></h5>
+            <% } else { %>
+                <h5><%= classItem.subject %> <%= classItem.type %></h5>
+            <% } %>
+            <p><%= classItem.time %></p>
+            <p><%= classItem.location %></p>
+            </div>
+        <% }) %> 
+</div>
+    <% }) %> 
