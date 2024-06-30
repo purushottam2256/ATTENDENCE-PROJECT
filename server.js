@@ -46,6 +46,9 @@ const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('de
 // const dayIndex = 2;
 const dayIndex = currentDate.getDay() - 1;
 
+app.get('/', (req, res) => {
+    res.redirect('login');
+});
 // Route for the login page
 app.get('/login', (req, res) => {
     res.render('login');
@@ -74,9 +77,11 @@ app.get('/logout', (req, res) => {
         res.redirect('/login'); // Redirect to login page after logout
     });
 });
+
 // Route for the user-specific page
 app.get('/:username', (req, res) => {
     const { username } = req.params;
+    
     let student = {};
     let schedule = {};
     if (isValidUser(username, username)) {
@@ -89,14 +94,13 @@ app.get('/:username', (req, res) => {
         schedule = scheduleDetails.find(schedule => schedule["class"] === student["section"]);
     }
     const classes = (dayIndex == -1) ? [] : schedule["schedule"][dayIndex]["classes"];
-
+    
     if (req.session.username === username) {
         res.render('user', { username, student, formattedDate, classes , capitalizeEachWord });
     } else {
         res.redirect('/login');
     }
 });
-
 app.get('/:username/schedule', (req, res) => {
     const { username } = req.params;
     let student = {};
@@ -118,7 +122,84 @@ app.get('/:username/schedule', (req, res) => {
         res.redirect('/login');
     }
 });
+app.get('/:username/info', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    }
 
+    if (req.session.username === username) {
+        res.render('info', { username, student, formattedDate , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/:username/attendance', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    }
+
+    if (req.session.username === username) {
+        res.render('attendance', { username, student, formattedDate , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
+app.get('/:username/time-table', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    }
+    const scheduleData = fs.readFileSync(scheduleDetailsFilePath);
+        const scheduleDetails = JSON.parse(scheduleData);
+
+    if (req.session.username === username) {
+        res.render('time-table', { username, student, scheduleDetails , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
+app.get('/:username/calendar', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    }
+
+    if (req.session.username === username) {
+        res.render('calendar', { username, student , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
+app.get('/:username/about', (req, res) => {
+    const { username } = req.params;
+    let student = {};
+    if (isValidUser(username, username)) {
+        const studentData = fs.readFileSync(studentDetailsFilePath);
+        const studentDetails = JSON.parse(studentData);
+        student = studentDetails.find(student => student["roll-number"] === username);
+    }
+
+    if (req.session.username === username) {
+        res.render('about', { username, student , capitalizeEachWord });
+    } else {
+        res.redirect('/login');
+    }
+});
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

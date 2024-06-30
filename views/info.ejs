@@ -9,7 +9,7 @@
         margin: 0;
         display: grid;
         grid-template-columns: 1fr 4fr;
-        grid-template-rows: 1fr 10fr;
+        grid-template-rows: 75px 10fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
       }
@@ -154,9 +154,7 @@
     <%- include("components/header") %>
     <%- include("components/nav") %>
     <main>
-        <%- include("components/daySchedule") %>
-        <h1>Schedule</h1>
-        <%- include("components/weekSchedule") %>
+        <%- include("components/info") %>
     </main>
   </body>
 </html>

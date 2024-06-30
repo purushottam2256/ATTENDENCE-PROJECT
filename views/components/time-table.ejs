@@ -1,0 +1,6 @@
+<div class="time-table">
+    <% scheduleDetails.forEach(schedule => { %>
+        <h1><%= schedule["class"] %></h1>
+        <%- include("weekSchedule", {schedule: schedule}) %>
+        <% }) %> 
+</div>

@@ -1,9 +1,9 @@
 <h1>Today’s Schedule</h1>
-<h4>12 June 2024</h4>
+<h4><%= formattedDate %></h4>
 <div class="classes">
     <% if (classes.length > 0) { %> 
         <% classes.forEach(classItem => { %>
-            <div class="class <%= classItem.type %>">
+            <div class="class <%= (classItem.classes == 2) ? `Lab` : `Theory` %>">
             <% if (classItem.type === 'Lab') { %>
                 <h5><%= classItem.info.join(' / ') %> <%= classItem.type %></h5>
             <% } else { %>
